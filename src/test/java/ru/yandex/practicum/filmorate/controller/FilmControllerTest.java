@@ -26,13 +26,7 @@ public class FilmControllerTest {
     public void beforeEach() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
-        film = Film.builder()
-                .name("Cтарикам тут не место")
-                .description("Наемный убийца преследует ветерана войны, укравшего деньги наркодилеров. " +
-                        "Философский триллер братьев Коэн")
-                .releaseDate(LocalDate.parse(String.valueOf(LocalDate.of(2007, 5, 19))))
-                .duration(122)
-                .id(1L).build();
+        film = new Film(1L, "Название", "описание, " , 120, LocalDate.of(2004, 1, 18));
         violations = validator.validate(film);
     }
 
