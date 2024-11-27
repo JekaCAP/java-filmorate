@@ -61,7 +61,7 @@ public class InMemoryUserStorage implements UserStorage {
         if (!users.containsKey(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Пользователь с id=" + id + " не найден!");
         }
-        for(User user : users.values()) {
+        for (User user : users.values()) {
             user.getFriends().remove(id);
         }
         return users.remove(id);

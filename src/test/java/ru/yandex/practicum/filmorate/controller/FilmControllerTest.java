@@ -26,7 +26,7 @@ public class FilmControllerTest {
     public void beforeEach() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
-        film = new Film(1L, "Название", "описание, " , 120, LocalDate.of(2004, 1, 18));
+        film = new Film(1L, "Название", "описание, ", 120, LocalDate.of(2004, 1, 18));
         violations = validator.validate(film);
     }
 
