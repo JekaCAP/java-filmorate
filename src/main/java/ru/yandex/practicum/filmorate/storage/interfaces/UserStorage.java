@@ -1,5 +1,6 @@
-package ru.yandex.practicum.filmorate.storage;
+package ru.yandex.practicum.filmorate.storage.interfaces;
 
+import jakarta.validation.Valid;
 import ru.yandex.practicum.filmorate.model.User;
 
 import java.util.List;
@@ -7,9 +8,9 @@ import java.util.List;
 public interface UserStorage {
     List<User> getAllUsers();
 
-    User createUser(User user);
+    User createUser(@Valid User user);
 
-    User updateUser(User user);
+    User updateUser(@Valid User user);
 
     User getUserById(Long id);
 

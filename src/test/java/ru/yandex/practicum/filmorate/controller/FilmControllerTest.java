@@ -1,13 +1,12 @@
 package ru.yandex.practicum.filmorate.controller;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import ru.yandex.practicum.filmorate.model.Film;
-
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import ru.yandex.practicum.filmorate.model.Film;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -26,7 +25,15 @@ public class FilmControllerTest {
     public void beforeEach() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
-        film = new Film(1L, "Название", "описание, ", 120, LocalDate.of(2004, 1, 18));
+
+        film = new Film();
+        film.setId(1L);
+        film.setName("Терминатор");
+        film.setDescription("Терминатор преследует терминатора, " +
+                "Чтобы остановить его. Боевик\"");
+        film.setDuration(122);
+        film.setReleaseDate(LocalDate.of(2007, 5, 19));
+
         violations = validator.validate(film);
     }
 
