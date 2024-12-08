@@ -111,7 +111,7 @@ public class FilmDAO implements FilmStorage {
         }
         return film;
     }
-    
+
     private Film fromColumnsToDto(FilmColumn filmColumn) {
         Film film = new Film();
         film.setId(filmColumn.getId());
