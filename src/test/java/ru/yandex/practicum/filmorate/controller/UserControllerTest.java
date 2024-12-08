@@ -1,13 +1,12 @@
 package ru.yandex.practicum.filmorate.controller;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import ru.yandex.practicum.filmorate.model.User;
-
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import ru.yandex.practicum.filmorate.model.User;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -26,8 +25,13 @@ public class UserControllerTest {
     public void beforeEach() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
-        user = new User(1L, "jeka@mail.ru", "cappuccino", "Евгений",
-                LocalDate.of(1989, 5, 13));
+
+        user = new User();
+        user.setId(1L);
+        user.setEmail("agentgeka@yandex.ru");
+        user.setLogin("JekaCap");
+        user.setName("Евгений");
+        user.setBirthday(LocalDate.of(1994, 6, 25));
         violations = validator.validate(user);
     }
 
