@@ -22,7 +22,7 @@ import java.util.List;
 public class UserDAO implements UserStorage {
 
     private final JdbcTemplate jdbcTemplate;
-    UserMapper userMapper = new UserMapper();
+    private final UserMapper userMapper = new UserMapper();
 
     @Override
     public List<User> getAllUsers() {

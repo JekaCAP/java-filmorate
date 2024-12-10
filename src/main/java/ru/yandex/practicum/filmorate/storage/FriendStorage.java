@@ -24,7 +24,12 @@ public class FriendStorage {
         User user = userStorage.getUserById(userId);
         User friend = userStorage.getUserById(friendId);
         if (user != null && friend != null) {
-            String sql = "INSERT INTO friends (user_id, friend_id, status) VALUES (?, ?, ?)";
+            String sql = """
+                    MERGE INTO friends (user_id, friend_id, status)
+                    KEY (user_id, friend_id)
+                    VALUES (?, ?, ?);
+                    """;
+
             jdbcTemplate.update(sql, userId, friendId, true);
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Один или оба пользователя не найдены");

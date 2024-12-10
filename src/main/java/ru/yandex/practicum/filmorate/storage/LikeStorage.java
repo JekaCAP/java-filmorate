@@ -25,7 +25,12 @@ public class LikeStorage {
     private final GenreService genreService;
 
     public void addLike(Long filmId, Long userId) {
-        String sql = "INSERT INTO film_likes (film_id, user_id) VALUES (?, ?)";
+        String sql = """
+                MERGE INTO film_likes (film_id, user_id)
+                KEY (film_id, user_id)
+                VALUES (?, ?);
+                """;
+
         jdbcTemplate.update(sql, filmId, userId);
     }
 
